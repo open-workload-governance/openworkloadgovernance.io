@@ -1,0 +1,25 @@
+apiVersion: openworkloadgovernance.io/v1alpha1
+kind: Workload
+
+metadata:
+  type: infrastructure
+  name: github://my-tenant
+  description: Github tenant for my company
+
+provides:
+  idp:
+    propertie: xxx
+    another_property: yyy
+  repository:
+    property: zzz
+
+# Do we need this??
+exports:
+  tenant:
+    ref: github://my-tenant
+  repo:
+    ref: github://my-tenant
+    kind: repository
+  identities:
+    ref: github://my-tenant
+    kind: identity

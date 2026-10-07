@@ -1,0 +1,100 @@
+apiVersion: openworkloadgovernance.io/v1alpha1
+kind: Workload
+
+metadata:
+  type: service
+  name: shop-api
+  description: Customer-facing webshop API
+
+ownership:
+  owners:
+    - omada:team
+    - servicenow:group
+  approvers:
+    - omada:role:customer-owner
+    - omada:role:platform-owner
+
+classification:
+  criticality: high
+  environment: prod
+  dataClassification: confidential
+
+identities:
+  - ref: github://repo/shop-api
+    tokens:
+      - ref: github://token/shop-api-token
+  - ref: entra://managed-identity/shop-api
+
+resources:
+  - ref: aws://account/shop-prod
+  - ref: github://repo/shop-api
+  - ref: kubernetes://namespace/shop
+  - ref: kafka://topic/orders
+
+provides:
+  apis:
+    - name: shop-api
+      scopes:
+        - customer.read
+        - customer.write
+        - order.read
+        - order.create
+      endpoints:
+        - https://api.shop.example.com
+
+requires:
+  - type: api
+    service: customer-api
+    scopes:
+      - customer.read
+  - type: api
+    service: payment-api
+    scopes:
+      - payment.create
+  - type: kafka-topic
+    resource: orders
+  - type: aws-role
+    resource: arn:aws:iam::123456789012:role/order-reader
+
+accessIntents:
+  - action: deploy
+    source:
+      ref: github://oidc/shop-api-prod
+    target:
+      ref: kubernetes://namespace/shop
+  - action: update-service
+    source:
+      ref: github://oidc/shop-api-prod
+    target:
+      ref: workload://customer-api
+
+governance:
+  changeManagement:
+    required: true
+    provider:
+      ref: servicenow://assignment-group/customer-platform
+  approvals:
+    requiredFor:
+      - production-deployment
+      - access-change
+    approvers:
+      - ref: omada://role/customer-owner
+  controls:
+    backupOwnerRequired: true
+    recertificationRequired: true
+
+references:
+  - ref: servicenow://business-service/BS12345
+    name: servicenow:service
+  - ref: backstage://component/shop-api
+    name: backstage:component
+  - ref: github://repo/shop-api
+    name: github:repo
+  - ref: omada://team/shop-team
+    name: omada:team
+  - ref: servicenow://group/customer-platform
+    name: servicenow:group
+  - ref: omada://role/customer-owner
+    name: omada:role:customer-owner
+  - ref: omada://role/platform-owner
+    name: omada:role:platform-owner

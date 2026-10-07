@@ -1,0 +1,17 @@
+apiVersion: openworkloadgovernance.io/v1alpha1
+kind: Workload
+
+metadata:
+  type: governance
+  name: servicenow://prod
+  description: Servicenow prod instance
+
+exports:
+  tenant:
+    ref: servicenow://prod
+  cmdb:
+    ref: servicenow://prod
+    kind: cmdb
+  identities:
+    ref: servicenow://prod
+    kind: identity

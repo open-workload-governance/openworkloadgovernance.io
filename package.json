@@ -1,0 +1,29 @@
+{
+  "name": "openworkloadgovernance.io",
+  "version": "0.1.0",
+  "private": true,
+  "description": "English-only Open Workload Governance documentation website",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "hugo --minify",
+    "serve": "hugo server --bind 127.0.0.1 --port 1314 --disableFastRender",
+    "fix:format": "prettier --write .",
+    "check:format": "prettier --check .",
+    "check:spelling": "cspell --no-progress 'content/**/*.md' '*.md'",
+    "check:markdown": "markdownlint-cli2 'content/**/*.md' '*.md'",
+    "check": "npm run check:format && npm run check:spelling && npm run check:markdown",
+    "test": "npm run build && node --test tests/site.test.mjs"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.6.1",
+    "cheerio": "1.2.0",
+    "cspell": "10.3.6",
+    "markdownlint-cli2": "0.23.3",
+    "postcss": "8.5.29",
+    "postcss-cli": "12.0.0",
+    "prettier": "3.9.9",
+    "yaml": "2.8.3"
+  }
+}

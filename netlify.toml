@@ -1,0 +1,15 @@
+[build]
+command = "npm ci && npm run build"
+publish = "public"
+
+[build.environment]
+HUGO_VERSION = "0.152.2"
+NODE_VERSION = "24"
+GO_VERSION = "1.25.5"
+HUGO_ENV = "production"
+
+[context.deploy-preview]
+command = 'npm ci && npm run build -- --baseURL "$DEPLOY_PRIME_URL/"'
+
+[context.branch-deploy]
+command = 'npm ci && npm run build -- --baseURL "$DEPLOY_PRIME_URL/"'

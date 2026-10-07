@@ -1,0 +1,33 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "OWG",
+    "Docsy",
+    "Hugo",
+    "Entra",
+    "LDAP",
+    "CMDB",
+    "CISO",
+    "IAM",
+    "IGA",
+    "Omada",
+    "ServiceNow",
+    "OIDC",
+    "webshop",
+    "recertification",
+    "GDPR",
+    "PCI",
+    "apiVersion",
+    "ctx",
+    "nonprod",
+    "kafka",
+    "netlify",
+    "goldmark",
+    "autoprefixer",
+    "postcss",
+    "markdownlint",
+    "pageRef",
+    "openworkloadgovernance"
+  ]
+}

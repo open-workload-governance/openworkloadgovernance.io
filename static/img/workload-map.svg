@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" role="img" aria-labelledby="title desc">
+  <title id="title">Workload governance relationships</title>
+  <desc id="desc">A Workload connects named owners and approvers to external references and describes identities, resources, capabilities, dependencies, access intents, and governance requirements.</desc>
+  <rect x="2" y="2" width="756" height="296" rx="4" fill="#f3f6f5" stroke="#176b65" stroke-width="2"/>
+  <g font-family="Trebuchet MS, sans-serif" fill="#25312e">
+    <text x="30" y="46" font-size="26" font-weight="bold">Workload</text>
+    <text x="30" y="73" font-size="16">A generic governance object</text>
+    <path d="M30 94H730" stroke="#bdcfca"/>
+    <text x="30" y="133" font-size="20" font-weight="bold">Owners + approvers</text>
+    <path d="M244 126H340m-10-7 10 7-10 7" fill="none" stroke="#176b65" stroke-width="2"/>
+    <text x="360" y="133" font-size="20" font-weight="bold">Named references</text>
+    <text x="360" y="160" font-size="16">External teams, groups, and roles</text>
+    <text x="30" y="184" font-size="20">Identities + resources</text>
+    <text x="360" y="184" font-size="20">Provides + requires</text>
+    <text x="30" y="219" font-size="20">Access intents</text>
+    <text x="360" y="219" font-size="20">Governance requirements</text>
+    <path d="M30 238H730" stroke="#bdcfca"/>
+    <text x="30" y="273" font-size="16">Declared relationships, not automatic access grants</text>
+  </g>
+</svg>
